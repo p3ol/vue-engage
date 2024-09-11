@@ -1,0 +1,10 @@
+commit-msg:
+  commands:
+    commitlint:
+      run: yarn commitlint --edit
+
+pre-push:
+  commands:
+    eslint:
+      glob: "*.{js}"
+      run: yarn eslint --max-warnings=0 .
