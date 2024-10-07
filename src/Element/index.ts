@@ -1,15 +1,19 @@
-import type { PropType, Ref } from 'vue';
+import type { Component, PropType, Ref } from 'vue';
 import type { Poool } from 'poool-engage';
-import { defineComponent, h, ref, toRaw, toRefs } from 'vue';
+import { defineComponent, h, reactive, ref, toRaw, toRefs } from 'vue';
 
 import type { EngageConfigCommons } from '../utils/types';
 import { generateId } from '../utils';
 import { trace, warn } from '../utils/logger';
 import { EngageProviderSymbol, EngageProviderValue } from '../EngageProvider';
 
-export declare interface ElementProps extends Omit<
+export declare interface EngageElementProps extends Omit<
   EngageConfigCommons, 'appId'
 > {
+  /**
+   * The element Tag
+   */
+  tag?: String | Component;
   /**
    * The element unique id
    */
@@ -28,7 +32,7 @@ export declare interface ElementProps extends Omit<
   rest?: Object
 }
 
-export declare interface ElementRef extends ElementProps {
+export declare interface EngageElementRef extends EngageElementProps {
   containerRef: Ref<HTMLElement>;
   elementRef: Ref<Poool.EngageElement>;
   elementId: string;
@@ -37,22 +41,26 @@ export declare interface ElementRef extends ElementProps {
 }
 
 const Element = defineComponent({
-  name: 'ElementComponent',
+  name: 'EngageElement',
 
   props: {
-    id: String as PropType<ElementProps['id']>,
-    slug: String as PropType<ElementProps['slug']>,
-    config: Object as PropType<ElementProps['config']>,
-    texts: Object as PropType<ElementProps['texts']>,
-    variables: Object as PropType<ElementProps['variables']>,
-    events: Object as PropType<ElementProps['events']>,
+    tag: [String, Object] as PropType<EngageElementProps['tag']>,
+    id: String as PropType<EngageElementProps['id']>,
+    slug: String as PropType<EngageElementProps['slug']>,
+    config: Object as PropType<EngageElementProps['config']>,
+    texts: Object as PropType<EngageElementProps['texts']>,
+    variables: Object as PropType<EngageElementProps['variables']>,
+    events: Object as PropType<EngageElementProps['events']>,
 
     useGlobalFactory: {
-      type: Boolean as PropType<ElementProps['useGlobalFactory']>,
+      type: Boolean as PropType<EngageElementProps['useGlobalFactory']>,
       default: true,
     },
 
-    rest: Object as PropType<ElementProps['rest']>,
+    rest: {
+      type: Object as PropType<EngageElementProps['rest']>,
+      default: () => ({}),
+    },
   },
 
   inject: {
@@ -76,7 +84,7 @@ const Element = defineComponent({
 
   setup(props) {
     const containerRef = ref<HTMLElement>();
-    const elementRef = ref<Poool.EngageElement>();
+    const elementRef = ref<Poool.EngageElement>({} as Poool.EngageElement);
     const componentId = props.id || generateId();
 
     return { containerRef, elementRef, componentId };
@@ -137,7 +145,7 @@ const Element = defineComponent({
       }
 
       const element = await engage.createElement(slug, containerRef);
-      this.elementRef.current = element;
+      this.elementRef.value = element;
 
       if (!this.mounted) {
         this.destroy();
@@ -145,7 +153,7 @@ const Element = defineComponent({
     },
 
     destroy() {
-      this.elementRef.current?.destroy();
+      toRaw(this.elementRef?.value)?.destroy();
     }
   },
 
@@ -155,7 +163,7 @@ const Element = defineComponent({
       {
         id: this.componentId,
         ref: 'containerRef',
-        ...toRefs(this.rest),
+        ...toRefs(reactive(this.rest)),
       },
       this.$slots?.default?.()
     );

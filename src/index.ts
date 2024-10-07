@@ -5,15 +5,15 @@ export {
 } from './EngageProvider';
 
 export {
-  default as Element,
-  type ElementRef,
-  type ElementProps,
+  default as EngageElement,
+  type EngageElementRef,
+  type EngageElementProps,
 } from './Element';
 
 export {
-  default as Elements,
-  type ElementsRef,
-  type ElementsProps,
+  default as EngageElements,
+  type EngageElementsRef,
+  type EngageElementsProps,
 } from './Elements';
 
 export type * from './utils/types';

@@ -6,7 +6,7 @@ import type { EngageConfigCommons } from '../utils/types';
 import { trace, warn } from '../utils/logger';
 import { EngageProviderSymbol, EngageProviderValue } from '../EngageProvider';
 
-export declare interface ElementsProps extends Omit<
+export declare interface EngageElementsProps extends Omit<
   EngageConfigCommons, 'appId'
 > {
   /**
@@ -19,7 +19,7 @@ export declare interface ElementsProps extends Omit<
   filters?: String[]
 }
 
-export declare interface ElementsRef extends ElementsProps {
+export declare interface EngageElementsRef extends EngageElementsProps {
   elementsRef: Ref<Poool.EngageElement[]>;
   engage: Poool.Engage | null;
   destroy: Promise<void[]>;
@@ -29,14 +29,14 @@ const Elements = defineComponent({
   name: 'ElementsComponent',
 
   props: {
-    config: Object as PropType<ElementsProps['config']>,
-    texts: Object as PropType<ElementsProps['texts']>,
-    variables: Object as PropType<ElementsProps['variables']>,
-    events: Object as PropType<ElementsProps['events']>,
-    filters: Object as PropType<ElementsProps['filters']>,
+    config: Object as PropType<EngageElementsProps['config']>,
+    texts: Object as PropType<EngageElementsProps['texts']>,
+    variables: Object as PropType<EngageElementsProps['variables']>,
+    events: Object as PropType<EngageElementsProps['events']>,
+    filters: Object as PropType<EngageElementsProps['filters']>,
 
     useGlobalFactory: {
-      type: Boolean as PropType<ElementsProps['useGlobalFactory']>,
+      type: Boolean as PropType<EngageElementsProps['useGlobalFactory']>,
       default: true,
     },
   },
@@ -61,7 +61,7 @@ const Elements = defineComponent({
   },
 
   setup() {
-    const elementsRef = ref<Poool.EngageElement[]>();
+    const elementsRef = ref<Poool.EngageElement[]>([]);
 
     return { elementsRef };
   },
@@ -119,7 +119,7 @@ const Elements = defineComponent({
       }
 
       const elements = await engage.autoCreate({ filters });
-      this.elementsRef.current = elements;
+      this.elementsRef.value = elements;
 
       if (!this.mounted) {
         this.destroy();
@@ -127,8 +127,8 @@ const Elements = defineComponent({
     },
 
     async destroy() {
-      return await Promise.all((this.elementRef.current || [])
-        .map((elem: Poool.EngageElement) => elem?.destroy())
+      return await Promise.all((this.elementsRef.value || [])
+        .map((elem: Poool.EngageElement) => toRaw(elem)?.destroy())
       );
     }
   },

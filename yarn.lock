@@ -492,6 +492,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@poool/vue-engage@portal:../../::locator=poool-vue-engage-basic-example%40workspace%3Aexamples%2Fbasic":
+  version: 0.0.0-use.local
+  resolution: "@poool/vue-engage@portal:../../::locator=poool-vue-engage-basic-example%40workspace%3Aexamples%2Fbasic"
+  dependencies:
+    "@junipero/core": "npm:3.7.1"
+    "@types/poool-engage": "npm:2.1.2"
+  peerDependencies:
+    vue: ^3.0.0
+  languageName: node
+  linkType: soft
+
 "@poool/vue-engage@workspace:.":
   version: 0.0.0-use.local
   resolution: "@poool/vue-engage@workspace:."
@@ -4135,6 +4146,14 @@ __metadata:
   checksum: 10c0/fead19ed9d801f1b1fcd0638a1ac53eabbb0945bf615f2f8806a8b646565a04a1b0e7ef115c951d225f042cca388fdc1cd3add46d10d1ed6951c20bd2998af10
   languageName: node
   linkType: hard
+
+"poool-vue-engage-basic-example@workspace:examples/basic":
+  version: 0.0.0-use.local
+  resolution: "poool-vue-engage-basic-example@workspace:examples/basic"
+  dependencies:
+    "@poool/vue-engage": "portal:../../"
+  languageName: unknown
+  linkType: soft
 
 "postcss-selector-parser@npm:^6.0.15":
   version: 6.1.2

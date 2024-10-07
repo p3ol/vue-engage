@@ -82,11 +82,6 @@ const EngageProvider = defineComponent({
       default: 2000,
     },
 
-    withAudit: {
-      type: Boolean,
-      default: false,
-    },
-
     vueDebug: {
       type: Boolean,
       default: false,
