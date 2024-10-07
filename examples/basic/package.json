@@ -1,0 +1,9 @@
+{
+  "name": "poool-vue-engage-basic-example",
+  "scripts": {
+    "serve": "vite"
+  },
+  "dependencies": {
+    "@poool/vue-engage": "portal:../../"
+  }
+}
