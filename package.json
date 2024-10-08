@@ -46,7 +46,6 @@
     "build:code": "rollup --configPlugin @rollup/plugin-swc -c",
     "build:types": "tsc --project ./tsconfig.build.json",
     "prepack": "yarn build && yarn lint && yarn tsc",
-    "test": "NODE_ENV='test' jest",
     "lint": "eslint --max-warnings=0 .",
     "release": "commit-and-tag-version && git push --follow-tags",
     "example:basic": "yarn workspace poool-vue-engage-basic-example serve",

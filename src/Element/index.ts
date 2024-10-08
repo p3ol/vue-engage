@@ -1,6 +1,6 @@
 import type { Component, PropType, Ref } from 'vue';
 import type { Poool } from 'poool-engage';
-import { defineComponent, h, reactive, ref, toRaw, toRefs } from 'vue';
+import { defineComponent, h, ref, toRaw } from 'vue';
 
 import type { EngageConfigCommons } from '../utils/types';
 import { generateId } from '../utils';
@@ -29,7 +29,7 @@ export declare interface EngageElementProps extends Omit<
   /**
    * Additional custom props
    */
-  rest?: Object
+  [key: string]: Object;
 }
 
 export declare interface EngageElementRef extends EngageElementProps {
@@ -55,11 +55,6 @@ const Element = defineComponent({
     useGlobalFactory: {
       type: Boolean as PropType<EngageElementProps['useGlobalFactory']>,
       default: true,
-    },
-
-    rest: {
-      type: Object as PropType<EngageElementProps['rest']>,
-      default: () => ({}),
     },
   },
 
@@ -163,7 +158,6 @@ const Element = defineComponent({
       {
         id: this.componentId,
         ref: 'containerRef',
-        ...toRefs(reactive(this.rest)),
       },
       this.$slots?.default?.()
     );
