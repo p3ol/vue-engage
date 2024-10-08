@@ -1,6 +1,10 @@
 <script>
 import { ref } from 'vue'
-import { EngageElement, EngageElements, EngageProvider } from '@poool/vue-engage';
+import {
+  EngageElement,
+  EngageElements,
+  EngageProvider,
+} from '@poool/vue-engage';
 
 export default {
   components: { EngageElement, EngageElements, EngageProvider },

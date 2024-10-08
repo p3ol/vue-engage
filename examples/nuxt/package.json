@@ -1,0 +1,10 @@
+{
+  "name": "poool-vue-engage-nuxt-example",
+  "type": "module",
+  "scripts": {
+    "serve": "nuxt dev"
+  },
+  "dependencies": {
+    "@poool/vue-engage": "portal:../../"
+  }
+}
