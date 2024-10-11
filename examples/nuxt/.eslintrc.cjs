@@ -5,12 +5,9 @@ const ERROR = 2;
 
 module.exports = {
   extends: [
-    '../.eslintrc.cjs',
+    '../../.eslintrc.cjs',
   ],
-  parserOptions: {
-    ecmaVersion: 'latest'
-  },
   rules: {
     "vue/multi-word-component-names": OFF,
-  }
-}
+  },
+};

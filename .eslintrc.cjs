@@ -9,9 +9,6 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript',
   ],
-  parserOptions: {
-    ecmaVersion: 'latest'
-  },
   rules: {
     // A: Essential
     "vue/multi-word-component-names": WARNING,
