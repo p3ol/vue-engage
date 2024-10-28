@@ -20,7 +20,7 @@
     "@rollup/plugin-node-resolve": "15.3.0",
     "@rollup/plugin-swc": "0.4.0",
     "@rollup/plugin-terser": "0.4.4",
-    "@swc/core": "1.7.35",
+    "@swc/core": "1.7.40",
     "@types/node": "22.7.5",
     "@vitejs/plugin-vue": "5.1.4",
     "@vue/eslint-config-typescript": "13.0.0",
