@@ -130,6 +130,11 @@ const EngageProvider = defineComponent({
       this.factory = factory;
     },
 
+    // Method to reload the EngageProvider (re-initialize)
+    async reload() {
+      await this.init();
+    },
+
     // Method to create a new Engage factory instance with every configs &
     // event handlers
     createFactory(opts: Omit<EngageConfigCommons, 'appId'> = {}) {
@@ -210,6 +215,7 @@ const EngageProvider = defineComponent({
         factory: computed(() => this.factory),
         createFactory: this.createFactory,
         commitPageView: this.commitPageView,
+        reload: this.reload,
       }) as EngageProviderValue,
     }
   },
