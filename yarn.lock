@@ -1635,7 +1635,7 @@ __metadata:
     "@types/poool-engage": "npm:2.1.2"
     "@vitejs/plugin-vue": "npm:5.1.5"
     "@vue/eslint-config-typescript": "npm:13.0.0"
-    "@vue/tsconfig": "npm:0.5.1"
+    "@vue/tsconfig": "npm:0.8.1"
     commit-and-tag-version: "npm:12.5.0"
     eslint: "npm:8.57.1"
     eslint-plugin-vue: "npm:9.29.1"
@@ -2920,10 +2920,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/tsconfig@npm:0.5.1":
-  version: 0.5.1
-  resolution: "@vue/tsconfig@npm:0.5.1"
-  checksum: 10c0/cf4049c0daf26579e42803eca661809f95f9196323b4a6aec1714ac3c80df37b44d3878468f56e2f3d1fe64640fe9cb42f20db42509ef858ab059fe05e0dd862
+"@vue/tsconfig@npm:0.8.1":
+  version: 0.8.1
+  resolution: "@vue/tsconfig@npm:0.8.1"
+  peerDependencies:
+    typescript: 5.x
+    vue: ^3.4.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+    vue:
+      optional: true
+  checksum: 10c0/f4e37182dc2560ce2c78e66fbf837000dba5460c12913ef37f5d54b6c0da518df1118fcc1968ff51d9541287a9d9d105fb17072b0dbb095919cfb50d1fe67a78
   languageName: node
   linkType: hard
 
