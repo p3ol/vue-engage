@@ -55,5 +55,5 @@
     "@junipero/core": "3.7.1",
     "@types/poool-engage": "2.1.2"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.12.0"
 }
