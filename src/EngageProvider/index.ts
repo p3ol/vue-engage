@@ -87,7 +87,6 @@ const EngageProvider = defineComponent({
       default: false,
     },
   },
-
   data: () => {
     return {
       lib: null as Poool.Engage | null,
@@ -97,10 +96,10 @@ const EngageProvider = defineComponent({
 
   async mounted() {
     if (
-      !globalThis.Engage ||
-      !globalThis.Engage.isPoool ||
-      !globalThis.PooolEngage ||
-      !globalThis.PooolEngage.isPoool
+      !globalThis.Engage &&
+      !globalThis.Engage?.isPoool &&
+      !globalThis.PooolEngage &&
+      !globalThis.PooolEngage?.isPoool
     ) {
       await loadScript(this.scriptUrl, 'poool-vue-engage-lib', {
         timeout: this.scriptLoadTimeout,
@@ -179,9 +178,9 @@ const EngageProvider = defineComponent({
           }
         });
 
-        trace('EngageProvider', this.vueDebug,
-          'Engage factory initialized & setup successfuly'
-        );
+      trace('EngageProvider', this.vueDebug,
+        'Engage factory initialized & setup successfuly'
+      );
 
       return factory;
     },
