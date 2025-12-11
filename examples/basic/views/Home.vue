@@ -16,7 +16,7 @@ const switchMode = () => {
 
 <template>
   <div>
-    <h1>Page d'accueil</h1>
+    <h1>Home</h1>
     <p>Current mode : {{ mode }}</p>
     <button
       :style="{ marginBottom: '20px' }"
@@ -26,7 +26,7 @@ const switchMode = () => {
     </button>
 
     <EngageProvider
-      appId="Qz9V02LNSO78aGfJEuAKNGTNmC8vbzmW6nEW8USQjlQGUcWbmWCtIT31mpWbVEG0"
+      appId="155PF-L7Q6Q-EB2GG-04TF8"
       :config="{ debug: true }"
       :vueDebug="true"
       :events="{

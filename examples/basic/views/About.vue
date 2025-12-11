@@ -1,12 +1,11 @@
 <template>
   <div>
     <h1>Article view {{ $route.params.id }}</h1>
-    <p>Cette page contient des informations sur l'application.</p>
-    <router-link to="/">Retour à l'accueil</router-link>
+    <router-link to="/">Back to home</router-link>
   </div>
 
   <EngageProvider
-    appId="Qz9V02LNSO78aGfJEuAKNGTNmC8vbzmW6nEW8USQjlQGUcWbmWCtIT31mpWbVEG0"
+    appId="155PF-L7Q6Q-EB2GG-04TF8"
     :config="{ debug: true }"
     :vueDebug="true"
     >
