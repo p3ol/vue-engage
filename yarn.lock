@@ -8096,7 +8096,7 @@ __metadata:
   resolution: "poool-vue-engage-basic-example@workspace:examples/basic"
   dependencies:
     "@poool/vue-engage": "portal:../../"
-    vue-router: "npm:4"
+    vue-router: "npm:4.6.3"
   languageName: unknown
   linkType: soft
 
@@ -10457,7 +10457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:4":
+"vue-router@npm:4.6.3":
   version: 4.6.3
   resolution: "vue-router@npm:4.6.3"
   dependencies:
