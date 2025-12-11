@@ -96,9 +96,7 @@ const EngageProvider = defineComponent({
 
   async mounted() {
     if (
-      !globalThis.Engage &&
       !globalThis.Engage?.isPoool &&
-      !globalThis.PooolEngage &&
       !globalThis.PooolEngage?.isPoool
     ) {
       await loadScript(this.scriptUrl, 'poool-vue-engage-lib', {
