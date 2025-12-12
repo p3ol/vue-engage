@@ -5,16 +5,16 @@
   "repository": "https://github.com/p3ol/vue-engage.git",
   "author": "Nicolas Auger <nicolas@poool.fr",
   "license": "MIT",
-  "main": "dist/poool-vue-engage.cjs.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/poool-vue-engage.cjs.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "engines": {
@@ -32,10 +32,6 @@
   },
   "devDependencies": {
     "@poool/eslint-config": "5.0.7",
-    "@rollup/plugin-commonjs": "29.0.0",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-swc": "0.4.0",
-    "@rollup/plugin-terser": "0.4.4",
     "@swc/core": "1.15.3",
     "@types/node": "25.0.1",
     "@vitejs/plugin-vue": "6.0.2",
@@ -44,7 +40,7 @@
     "commit-and-tag-version": "12.6.1",
     "eslint": "9.39.1",
     "eslint-plugin-vue": "10.6.2",
-    "rollup": "4.53.3",
+    "tsdown": "0.17.3",
     "typescript": "5.9.3",
     "typescript-eslint": "8.49.0",
     "vite": "7.2.7",
@@ -56,13 +52,22 @@
     "type-check": "vue-tsc --build --force",
     "clean": "rm -rf ./dist || true",
     "build": "yarn clean && yarn build:code && yarn build:types",
-    "build:code": "rollup --configPlugin @rollup/plugin-swc -c",
+    "build:code": "tsdown",
     "build:types": "tsc --project ./tsconfig.build.json",
     "prepack": "yarn build && yarn lint && yarn tsc",
     "lint": "eslint --max-warnings=0 .",
     "release": "commit-and-tag-version && git push --follow-tags",
+    "release:dry": "commit-and-tag-version --dry-run",
     "example:basic": "yarn workspace poool-vue-engage-basic-example serve",
     "example:nuxt": "yarn workspace poool-vue-engage-nuxt-example serve"
   },
+  "targets": [
+    "chrome109",
+    "edge138",
+    "firefox140",
+    "safari18",
+    "opera80",
+    "node20"
+  ],
   "packageManager": "yarn@4.12.0"
 }

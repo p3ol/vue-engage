@@ -50,7 +50,7 @@ const Elements = defineComponent({
     },
     filters: {
       type: Array as PropType<EngageElementsProps['filters']>,
-      default: () => ([]),
+      default: (): string[] => [],
     },
     useGlobalFactory: {
       type: Boolean as PropType<EngageElementsProps['useGlobalFactory']>,

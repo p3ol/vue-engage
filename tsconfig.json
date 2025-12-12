@@ -20,7 +20,7 @@
   },
   "include": [
     "./src",
-    "rollup.config.ts",
+    "tsdown.config.ts",
     "./global.d.ts",
   ],
   "exclude": [
