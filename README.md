@@ -1,3 +1,5 @@
+[![CI](https://github.com/p3ol/vue-engage/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/p3ol/vue-engage/actions/workflows/ci.yml)
+
 # Poool Engage - Vue SDK
 
 Plugin to easily add Poool engage to your Vue app ✨
