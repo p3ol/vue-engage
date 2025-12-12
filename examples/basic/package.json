@@ -1,5 +1,6 @@
 {
   "name": "poool-vue-engage-basic-example",
+  "type": "module",
   "scripts": {
     "serve": "vite"
   },

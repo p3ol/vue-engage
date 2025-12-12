@@ -18,7 +18,11 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*", "src/**/*.vue"],
+  "include": [
+    "./src",
+    "rollup.config.ts",
+    "./global.d.ts",
+  ],
   "exclude": [
     "**/dist/*",
     "node_modules/**/*",

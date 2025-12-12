@@ -13,23 +13,23 @@ export declare interface EngageElementProps extends Omit<
   /**
    * The element Tag
    */
-  tag?: String | Component;
+  tag?: string | Component;
   /**
    * The element unique id
    */
-  id: String;
+  id: string;
   /**
    * The element unique slug
    */
-  slug: String;
+  slug: string;
   /**
    * Whether to use global engage lib factory
    */
-  useGlobalFactory?: Boolean;
+  useGlobalFactory?: boolean;
   /**
    * Additional custom props
    */
-  [key: string]: Object;
+  [key: string]: any;
 }
 
 export declare interface EngageElementRef extends EngageElementProps {
@@ -42,61 +42,73 @@ export declare interface EngageElementRef extends EngageElementProps {
 
 const Element = defineComponent({
   name: 'EngageElement',
-
+  inject: {
+    // Use Engage Provider to get the Engage SDK and its config
+    engageProvider: { from: EngageProviderSymbol },
+  },
   props: {
-    tag: [String, Object] as PropType<EngageElementProps['tag']>,
-    id: String as PropType<EngageElementProps['id']>,
-    slug: String as PropType<EngageElementProps['slug']>,
-    config: Object as PropType<EngageElementProps['config']>,
-    texts: Object as PropType<EngageElementProps['texts']>,
-    variables: Object as PropType<EngageElementProps['variables']>,
-    events: Object as PropType<EngageElementProps['events']>,
-
+    tag: {
+      type: [String, Object] as PropType<EngageElementProps['tag']>,
+      default: 'div',
+    },
+    id: {
+      type: String as PropType<EngageElementProps['id']>,
+      default: '',
+    },
+    slug: {
+      type: String as PropType<EngageElementProps['slug']>,
+      default: '',
+    },
+    config: {
+      type: Object as PropType<EngageElementProps['config']>,
+      default: () => ({}),
+    },
+    texts: {
+      type: Object as PropType<EngageElementProps['texts']>,
+      default: () => ({}),
+    },
+    variables: {
+      type: Object as PropType<EngageElementProps['variables']>,
+      default: () => ({}),
+    },
+    events: {
+      type: Object as PropType<EngageElementProps['events']>,
+      default: () => ({}),
+    },
     useGlobalFactory: {
       type: Boolean as PropType<EngageElementProps['useGlobalFactory']>,
       default: true,
     },
   },
-
-  inject: {
-    // Use Engage Provider to get the Engage SDK and its config
-    engageProvider: { from: EngageProviderSymbol },
-  },
-
-  watch: {
-    'engageProvider.lib': { handler: 'create', deep: true },
-  },
-
-  data() {
-    return {
-      engageFactory: null as Poool.Engage,
-      mounted: {
-        type: Boolean,
-        default: false,
-      },
-    }
-  },
-
-  setup(props) {
+  setup (props) {
     const containerRef = ref<HTMLElement>();
     const elementRef = ref<Poool.EngageElement>({} as Poool.EngageElement);
     const componentId = props.id || generateId();
 
     return { containerRef, elementRef, componentId };
   },
-
-  mounted() {
+  data () {
+    return {
+      engageFactory: null as Poool.Engage,
+      mounted: {
+        type: Boolean,
+        default: false,
+      },
+    };
+  },
+  watch: {
+    'engageProvider.lib': { handler: 'create', deep: true },
+  },
+  mounted () {
     this.create();
   },
-
-  beforeUnmount() {
+  beforeUnmount () {
     const container = this.$refs.containerRef as HTMLElement;
     this.mounted = false;
     this.destroy(container);
   },
-
   methods: {
-    async create() {
+    async create () {
       this.mounted = true;
 
       const {
@@ -127,6 +139,7 @@ const Element = defineComponent({
       });
 
       const engage = toRaw(factory);
+
       if (!engage) {
         warn(
           'Element',
@@ -136,6 +149,7 @@ const Element = defineComponent({
             : ''
           }`
         );
+
         return;
       }
 
@@ -146,13 +160,11 @@ const Element = defineComponent({
         this.destroy();
       }
     },
-
-    destroy() {
+    destroy () {
       toRaw(this.elementRef?.value)?.destroy();
-    }
+    },
   },
-
-  render() {
+  render () {
     return h(
       this.tag ?? 'div',
       {
@@ -162,7 +174,6 @@ const Element = defineComponent({
       this.$slots?.default?.()
     );
   },
-
 });
 
 export default Element;

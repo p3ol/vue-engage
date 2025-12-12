@@ -50,6 +50,7 @@ export const getGlobal = () => {
 
   return globalThis;
 };
+
 export const isOldIE = () => {
   const ua = getGlobal()?.navigator.userAgent ?? '';
 

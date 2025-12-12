@@ -52,7 +52,8 @@ export const warn = (
   if (isMobile() || isOldIE()) {
     console.warn('[Vue-Engage Debug] ' + component + ' :', ...args);
   } else {
-    console.warn(`[Vue-Engage] %c ${component} `, getStyles(component, 'warn'), ...args);
+    console.warn(`[Vue-Engage] %c ${component} `,
+      getStyles(component, 'warn'), ...args);
   }
 };
 
@@ -66,6 +67,7 @@ export const error = (
   if (isMobile() || isOldIE()) {
     console.error('[Vue-Engage Debug] ' + component + ' :', ...args);
   } else {
-    console.error(`[Vue-Engage] %c ${component} `, getStyles(component, 'error'), ...args);
+    console.error(`[Vue-Engage] %c ${component} `,
+      getStyles(component, 'error'), ...args);
   }
 };

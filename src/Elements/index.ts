@@ -1,6 +1,6 @@
 import type { PropType, Ref } from 'vue';
-import { defineComponent, ref, toRaw } from 'vue';
 import type { Poool } from 'poool-engage';
+import { defineComponent, ref, toRaw } from 'vue';
 
 import type { EngageConfigCommons } from '../utils/types';
 import { trace, warn } from '../utils/logger';
@@ -12,11 +12,11 @@ export declare interface EngageElementsProps extends Omit<
   /**
    * Whether to use global engage lib factory
    */
-  useGlobalFactory?: Boolean;
+  useGlobalFactory?: boolean;
   /**
    * List of filters to apply to elements
    */
-  filters?: String[]
+  filters?: string[];
 }
 
 export declare interface EngageElementsRef extends EngageElementsProps {
@@ -27,55 +27,61 @@ export declare interface EngageElementsRef extends EngageElementsProps {
 
 const Elements = defineComponent({
   name: 'ElementsComponent',
-
+  inject: {
+    // Use Engage Provider to get the Engage SDK and its config
+    engageProvider: { from: EngageProviderSymbol },
+  },
   props: {
-    config: Object as PropType<EngageElementsProps['config']>,
-    texts: Object as PropType<EngageElementsProps['texts']>,
-    variables: Object as PropType<EngageElementsProps['variables']>,
-    events: Object as PropType<EngageElementsProps['events']>,
-    filters: Object as PropType<EngageElementsProps['filters']>,
-
+    config: {
+      type: Object as PropType<EngageElementsProps['config']>,
+      default: () => ({}),
+    },
+    texts: {
+      type: Object as PropType<EngageElementsProps['texts']>,
+      default: () => ({}),
+    },
+    variables: {
+      type: Object as PropType<EngageElementsProps['variables']>,
+      default: () => ({}),
+    },
+    events: {
+      type: Object as PropType<EngageElementsProps['events']>,
+      default: () => ({}),
+    },
+    filters: {
+      type: Array as PropType<EngageElementsProps['filters']>,
+      default: () => ([]),
+    },
     useGlobalFactory: {
       type: Boolean as PropType<EngageElementsProps['useGlobalFactory']>,
       default: true,
     },
   },
+  setup () {
+    const elementsRef = ref<Poool.EngageElement[]>([]);
 
-  inject: {
-    // Use Engage Provider to get the Engage SDK and its config
-    engageProvider: { from: EngageProviderSymbol },
+    return { elementsRef };
   },
-
-  watch: {
-    'engageProvider.lib': { handler: 'create', deep: true },
-  },
-
-  data() {
+  data () {
     return {
       mounted: {
         type: Boolean,
         default: false,
       },
-    }
+    };
   },
-
-  setup() {
-    const elementsRef = ref<Poool.EngageElement[]>([]);
-
-    return { elementsRef };
+  watch: {
+    'engageProvider.lib': { handler: 'create', deep: true },
   },
-
-  mounted() {
+  mounted () {
     this.create();
   },
-
-  beforeUnmount() {
+  beforeUnmount () {
     this.mounted = false;
     this.destroy();
   },
-
   methods: {
-    async create() {
+    async create () {
       this.mounted = true;
 
       const {
@@ -103,6 +109,7 @@ const Elements = defineComponent({
       });
 
       const engage = toRaw(factory);
+
       if (!engage) {
         warn(
           'Elements',
@@ -112,6 +119,7 @@ const Elements = defineComponent({
             : ''
           }`
         );
+
         return;
       }
 
@@ -122,18 +130,15 @@ const Elements = defineComponent({
         this.destroy();
       }
     },
-
-    async destroy() {
+    async destroy () {
       return await Promise.all((this.elementsRef.value || [])
         .map((elem: Poool.EngageElement) => toRaw(elem)?.destroy())
       );
-    }
+    },
   },
-
-  render() {
-    return this.$slots?.default?.()
+  render () {
+    return this.$slots?.default?.();
   },
-
 });
 
 export default Elements;

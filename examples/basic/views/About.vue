@@ -1,15 +1,17 @@
 <template>
   <div>
     <h1>Article view {{ $route.params.id }}</h1>
-    <router-link to="/">Back to home</router-link>
+    <router-link to="/">
+      Back to home
+    </router-link>
   </div>
 
   <EngageProvider
     appId="155PF-L7Q6Q-EB2GG-04TF8"
     :config="{ debug: true }"
     :vueDebug="true"
-    >
-    <EngageElements :key="route.fullPath"/>
+  >
+    <EngageElements :key="route.fullPath" />
   </EngageProvider>
 </template>
 

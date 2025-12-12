@@ -1,17 +1,16 @@
 <script setup>
 import { ref } from 'vue';
-
 import {
   EngageProvider,
   EngageElement,
   EngageElements,
 } from '@poool/vue-engage';
 
-const mode = ref('auto')
+const mode = ref('auto');
 
 const switchMode = () => {
   mode.value = mode.value === 'auto' ? 'slug' : 'auto';
-}
+};
 </script>
 
 <template>

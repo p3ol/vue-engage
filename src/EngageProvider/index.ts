@@ -1,11 +1,11 @@
+import type { Poool } from 'poool-engage';
 import {
   type PropType,
   computed,
   defineComponent,
   readonly,
   toRaw,
-  } from 'vue';
-import type { Poool } from 'poool-engage';
+} from 'vue';
 import { mergeDeep } from '@junipero/core';
 
 import type {
@@ -48,40 +48,52 @@ export const EngageProviderSymbol = Symbol('EngageProvider');
 
 const EngageProvider = defineComponent({
   name: 'EngageProvider',
-
+  provide () {
+    return {
+      [EngageProviderSymbol]: readonly({
+        lib: computed(() => this.lib),
+        appId: computed(() => this.appId),
+        config: computed(() => this.config),
+        texts: computed(() => this.texts),
+        variables: computed(() => this.variables),
+        events: computed(() => this.events),
+        scriptUrl: computed(() => this.scriptUrl),
+        vueDebug: computed(() => this.vueDebug),
+        factory: computed(() => this.factory),
+        createFactory: this.createFactory,
+        commitPageView: this.commitPageView,
+      }) as EngageProviderValue,
+    };
+  },
   props: {
-    appId: String,
-
+    appId: {
+      type: String,
+      required: true,
+    },
     config: {
       type: Object as PropType<EngageProviderValue['config']>,
-      default() { return {}; },
+      default () { return {}; },
     },
-
     texts: {
       type: Object as PropType<EngageProviderValue['texts']>,
-      default() { return {}; },
+      default () { return {}; },
     },
-
     variables: {
       type: Object as PropType<EngageProviderValue['variables']>,
-      default() { return {}; },
+      default () { return {}; },
     },
-
     events: {
       type: Object as PropType<EngageProviderValue['events']>,
-      default() { return {}; },
+      default () { return {}; },
     },
-
     scriptUrl: {
       type: String,
       default: 'https://assets.poool.fr/engage.min.js',
     },
-
     scriptLoadTimeout: {
       type: Number,
       default: 2000,
     },
-
     vueDebug: {
       type: Boolean,
       default: false,
@@ -93,8 +105,7 @@ const EngageProvider = defineComponent({
       factory: null as Poool.Engage,
     };
   },
-
-  async mounted() {
+  async mounted () {
     if (
       !globalThis.Engage?.isPoool &&
       !globalThis.PooolEngage?.isPoool
@@ -106,10 +117,9 @@ const EngageProvider = defineComponent({
 
     this.init();
   },
-
   methods: {
     // Method to load the Engage SDK script into the global scope
-    async init() {
+    async init () {
       const engageRef = globalThis.PooolEngage || globalThis.Engage;
       this.lib = engageRef?.noConflict();
 
@@ -126,10 +136,9 @@ const EngageProvider = defineComponent({
 
       this.factory = factory;
     },
-
     // Method to create a new Engage factory instance with every configs &
     // event handlers
-    createFactory(opts: Omit<EngageConfigCommons, 'appId'> = {}) {
+    createFactory (opts: Omit<EngageConfigCommons, 'appId'> = {}) {
       const lib = toRaw(this.lib);
 
       if (!lib) {
@@ -165,6 +174,7 @@ const EngageProvider = defineComponent({
           EventCallback<typeof this.events[keyof typeof this.events]>,
         ]) => {
           const eventName = event as Poool.EngageEventsList;
+
           if ((callback as EventCallbackObject<typeof event>).once) {
             factory.once(eventName,
               (callback as EventCallbackObject<typeof event>).callback);
@@ -183,35 +193,15 @@ const EngageProvider = defineComponent({
       return factory;
     },
 
-    commitPageView() {
+    commitPageView () {
       const engage = toRaw(this.lib) as Poool.Engage;
 
       if (!engage) { return; }
 
       engage.commitPageView();
-    }
+    },
   },
-
-  // Used to provide the EngageProvider values to all child components
-  provide() {
-    return {
-      [EngageProviderSymbol]: readonly({
-        lib: computed(() => this.lib),
-        appId: computed(() => this.appId),
-        config: computed(() => this.config),
-        texts: computed(() => this.texts),
-        variables: computed(() => this.variables),
-        events: computed(() => this.events),
-        scriptUrl: computed(() => this.scriptUrl),
-        vueDebug: computed(() => this.vueDebug),
-        factory: computed(() => this.factory),
-        createFactory: this.createFactory,
-        commitPageView: this.commitPageView,
-      }) as EngageProviderValue,
-    }
-  },
-
-  render() {
+  render () {
     // Our provider component is a renderless component
     // it does not render any markup of its own.
     return this.$slots?.default?.();

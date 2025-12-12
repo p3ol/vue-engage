@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 import {
   EngageElement,
   EngageElements,
@@ -7,6 +7,7 @@ import {
 } from '@poool/vue-engage';
 
 let mode = ref('auto');
+
 const switchMode = () => {
   mode.value = mode.value === 'auto' ? 'slug' : 'auto';
 };
@@ -29,6 +30,6 @@ const switchMode = () => {
     <EngageElements v-if="mode === 'auto'" />
     <EngageElement v-else slug="react-engage" />
 
-    <div id="app"></div> <!-- This is only for engage element dislay -->
+    <div id="app" /> <!-- This is only for engage element dislay -->
   </EngageProvider>
 </template>

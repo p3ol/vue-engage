@@ -5,6 +5,7 @@
     "serve": "nuxt dev"
   },
   "dependencies": {
-    "@poool/vue-engage": "portal:../../"
+    "@poool/vue-engage": "portal:../../",
+    "nuxt": "4.2.2"
   }
 }
