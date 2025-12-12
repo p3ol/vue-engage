@@ -51,7 +51,7 @@
     "example:nuxt": "yarn workspace poool-vue-engage-nuxt-example serve"
   },
   "dependencies": {
-    "@junipero/core": "3.7.1",
+    "@junipero/core": "3.12.3",
     "@types/poool-engage": "2.2.0"
   },
   "packageManager": "yarn@4.5.0"

@@ -1115,10 +1115,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@junipero/core@npm:3.7.1":
-  version: 3.7.1
-  resolution: "@junipero/core@npm:3.7.1"
-  checksum: 10c0/5f4c293fead40ef4216e173a3c419b7bc3148b212c2d5f3bab8afa1bc160c5208ecac6f78f1d18002608f6442ca31f1786112a23bf75bbbbd92c5b838de2c951
+"@junipero/core@npm:3.12.3":
+  version: 3.12.3
+  resolution: "@junipero/core@npm:3.12.3"
+  checksum: 10c0/33a064e86513fb092ba3014a26c0e47d6f435ce762d7e8d98187eaa11ddfad052b3ac040367b41619bdbd7d399d95d7dd681446d11403629af963430cc4e1e81
   languageName: node
   linkType: hard
 
@@ -1603,7 +1603,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/vue-engage@portal:../../::locator=poool-vue-engage-basic-example%40workspace%3Aexamples%2Fbasic"
   dependencies:
-    "@junipero/core": "npm:3.7.1"
+    "@junipero/core": "npm:3.12.3"
     "@types/poool-engage": "npm:2.2.0"
   peerDependencies:
     vue: ^3.0.0
@@ -1614,7 +1614,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/vue-engage@portal:../../::locator=poool-vue-engage-nuxt-example%40workspace%3Aexamples%2Fnuxt"
   dependencies:
-    "@junipero/core": "npm:3.7.1"
+    "@junipero/core": "npm:3.12.3"
     "@types/poool-engage": "npm:2.2.0"
   peerDependencies:
     vue: ^3.0.0
@@ -1625,7 +1625,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/vue-engage@workspace:."
   dependencies:
-    "@junipero/core": "npm:3.7.1"
+    "@junipero/core": "npm:3.12.3"
     "@rollup/plugin-commonjs": "npm:28.0.1"
     "@rollup/plugin-node-resolve": "npm:15.3.0"
     "@rollup/plugin-swc": "npm:0.4.0"
