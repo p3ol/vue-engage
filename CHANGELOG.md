@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.1](https://github.com/p3ol/vue-engage/compare/v1.0.0...v1.0.1) (2025-12-12)
+
+
+### Bug Fixes
+
+* package is now module first ([e1ec050](https://github.com/p3ol/vue-engage/commit/e1ec0501bc081c205c2f1eb032f4cd2d695aeab1))
+* **provider:** cleaner loading script condition ([e5169a7](https://github.com/p3ol/vue-engage/commit/e5169a70fd494fee39af1b1c40153208f2fc367f))
+* upgrade various deps ([02619ef](https://github.com/p3ol/vue-engage/commit/02619efd7ef66e677508ba167f9a520a1548fa50))
+* wrong engage provider behavior ([f7ebec8](https://github.com/p3ol/vue-engage/commit/f7ebec8d8c9d0334a2cb2610b828f3620245b74e))
+
 ## 1.0.0 (2024-10-11)
 
 
