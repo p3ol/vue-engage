@@ -9,12 +9,20 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
+  "type": "module",
   "engines": {
     "node": "18 || 20 || 22"
   },
   "workspaces": [
     "examples/*"
   ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@junipero/core": "3.7.1",
+    "@types/poool-engage": "2.2.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "28.0.1",
     "@rollup/plugin-node-resolve": "15.3.0",
@@ -35,9 +43,6 @@
     "vue": "3.5.12",
     "vue-tsc": "2.1.10"
   },
-  "peerDependencies": {
-    "vue": "^3.0.0"
-  },
   "scripts": {
     "type-check": "vue-tsc --build --force",
     "clean": "rm -rf ./dist || true",
@@ -50,9 +55,5 @@
     "example:basic": "yarn workspace poool-vue-engage-basic-example serve",
     "example:nuxt": "yarn workspace poool-vue-engage-nuxt-example serve"
   },
-  "dependencies": {
-    "@junipero/core": "3.7.1",
-    "@types/poool-engage": "2.2.0"
-  },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.12.0"
 }
