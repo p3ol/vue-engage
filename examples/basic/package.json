@@ -4,6 +4,7 @@
     "serve": "vite"
   },
   "dependencies": {
-    "@poool/vue-engage": "portal:../../"
+    "@poool/vue-engage": "portal:../../",
+    "vue-router": "4.6.3"
   }
 }

@@ -1604,7 +1604,7 @@ __metadata:
   resolution: "@poool/vue-engage@portal:../../::locator=poool-vue-engage-basic-example%40workspace%3Aexamples%2Fbasic"
   dependencies:
     "@junipero/core": "npm:3.7.1"
-    "@types/poool-engage": "npm:2.1.2"
+    "@types/poool-engage": "npm:2.2.0"
   peerDependencies:
     vue: ^3.0.0
   languageName: node
@@ -1615,7 +1615,7 @@ __metadata:
   resolution: "@poool/vue-engage@portal:../../::locator=poool-vue-engage-nuxt-example%40workspace%3Aexamples%2Fnuxt"
   dependencies:
     "@junipero/core": "npm:3.7.1"
-    "@types/poool-engage": "npm:2.1.2"
+    "@types/poool-engage": "npm:2.2.0"
   peerDependencies:
     vue: ^3.0.0
   languageName: node
@@ -1632,7 +1632,7 @@ __metadata:
     "@rollup/plugin-terser": "npm:0.4.4"
     "@swc/core": "npm:1.7.40"
     "@types/node": "npm:22.7.5"
-    "@types/poool-engage": "npm:2.1.2"
+    "@types/poool-engage": "npm:2.2.0"
     "@vitejs/plugin-vue": "npm:5.1.5"
     "@vue/eslint-config-typescript": "npm:13.0.0"
     "@vue/tsconfig": "npm:0.5.1"
@@ -1644,7 +1644,6 @@ __metadata:
     typescript: "npm:5.6.3"
     vite: "npm:5.4.10"
     vue: "npm:3.5.12"
-    vue-router: "npm:4.4.5"
     vue-tsc: "npm:2.1.10"
   peerDependencies:
     vue: ^3.0.0
@@ -2269,10 +2268,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/poool-engage@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@types/poool-engage@npm:2.1.2"
-  checksum: 10c0/6ee719922224775c4773d1244fbe174753d5a7daaaa88adce463afa2f690f853ff6658f162c467bb19871452a89c91a1f6109fe447961ff0bfc57caefce87cc5
+"@types/poool-engage@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@types/poool-engage@npm:2.2.0"
+  checksum: 10c0/ed57cbd9d813491e003a87aa358ee2648e25840520bab855c44a577bb247d9078f51a6d8910bb11f97b464d80699096d476fd1800ef1195f8836bf49d60c5489
   languageName: node
   linkType: hard
 
@@ -8097,6 +8096,7 @@ __metadata:
   resolution: "poool-vue-engage-basic-example@workspace:examples/basic"
   dependencies:
     "@poool/vue-engage": "portal:../../"
+    vue-router: "npm:4.6.3"
   languageName: unknown
   linkType: soft
 
@@ -10457,7 +10457,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:4.4.5, vue-router@npm:^4.4.5":
+"vue-router@npm:4.6.3":
+  version: 4.6.3
+  resolution: "vue-router@npm:4.6.3"
+  dependencies:
+    "@vue/devtools-api": "npm:^6.6.4"
+  peerDependencies:
+    vue: ^3.5.0
+  checksum: 10c0/4528f4fded4b45b07d4e096116e9b5fd602af463e735f7e5133b1a258ce325ebc894dd7bc962a937556615fd42d06b0fb290dfae90e96f237862b7f74baa22a0
+  languageName: node
+  linkType: hard
+
+"vue-router@npm:^4.4.5":
   version: 4.4.5
   resolution: "vue-router@npm:4.4.5"
   dependencies:

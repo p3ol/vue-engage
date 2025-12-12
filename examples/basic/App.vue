@@ -1,47 +1,27 @@
-<script>
-import { ref } from 'vue'
-import {
-  EngageElement,
-  EngageElements,
-  EngageProvider,
-} from '@poool/vue-engage';
-
-export default {
-  components: { EngageElement, EngageElements, EngageProvider },
-
-  setup() {
-    if (!document.referrer) {
-      location.reload();
-    }
-
-    const mode = ref('auto')
-
-    return { mode }
-  },
-
-  methods: {
-    switchMode() {
-      this.mode = this.mode === 'auto' ? 'slug' : 'auto';
-    }
-  }
-}
-</script>
-
 <template>
-  <EngageProvider
-    appId="155PF-L7Q6Q-EB2GG-04TF8"
-    :config="{ debug: true }"
-    :vueDebug="true"
-  >
-    <p>Current mode : {{ this.mode }}</p>
-    <button
-      :style="{ marginBottom: '20px' }"
-      @click="switchMode"
-    >
-      Switch to {{ this.mode === 'auto' ? 'slug' : 'auto' }} mode
-    </button>
-
-    <EngageElements v-if="this.mode === 'auto'" />
-    <EngageElement v-else slug="react-engage" />
-  </EngageProvider>
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about/2" >About</router-link> |
+      <router-link to="/about/3">About2</router-link>
+    </nav>
+    <router-view />
+  </div>
 </template>
+
+<style>
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>

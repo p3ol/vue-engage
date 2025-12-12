@@ -52,7 +52,6 @@ const Elements = defineComponent({
 
   data() {
     return {
-      engageFactory: null as Poool.Engage,
       mounted: {
         type: Boolean,
         default: false,
@@ -96,8 +95,6 @@ const Elements = defineComponent({
         variables,
       } = this;
 
-      // Use EngageProvider global factory when needed or create a new one
-      // for all elements
       const factory = useGlobalFactory ? globalFactory : createFactory?.({
         config,
         events,
