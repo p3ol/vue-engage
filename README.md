@@ -150,8 +150,14 @@ Creates all elements matching multiple conditions like device, country, custom f
 - `events` {`Object`} (optional) Engage events listeners (see the [events](https://poool.dev/docs/engage/javascript/events) documentation)
 - `useGlobalFactory` {`Boolean`} (optional, default: `true`) Whether to use global factory, created in the EngageProvider component
 
- 
-### Quickly test localy
+## Contributing
+
+[![](https://contrib.rocks/image?repo=p3ol/vue-engage)](https://github.com/p3ol/vue-engage/graphs/contributors)
+
+Please check the [CONTRIBUTING.md](https://github.com/p3ol/vue-engage/blob/master/CONTRIBUTING.md) doc for contribution guidelines.
+
+
+## Development
 
 Run basic example with Vite
 
@@ -164,3 +170,7 @@ Run Nuxt framework example
 ```bash
 yarn example:nuxt
 ```
+
+## License
+
+This software is licensed under [MIT](https://github.com/p3ol/vue-engage/blob/master/LICENSE).
