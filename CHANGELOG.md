@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.2](https://github.com/p3ol/vue-engage/compare/v1.0.1...v1.0.2) (2025-12-15)
+
+
+### Bug Fixes
+
+* mjs generated instead of js ([bd8056d](https://github.com/p3ol/vue-engage/commit/bd8056d29da04ae6bb05394bb93bf262d311b7fc))
+
 ## [1.0.1](https://github.com/p3ol/vue-engage/compare/v1.0.0...v1.0.1) (2025-12-12)
 
 

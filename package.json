@@ -1,6 +1,6 @@
 {
   "name": "@poool/vue-engage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin to easily add Poool engage to your Vue app ✨",
   "repository": "https://github.com/p3ol/vue-engage.git",
   "author": "Nicolas Auger <nicolas@poool.fr",
