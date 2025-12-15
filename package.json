@@ -34,7 +34,7 @@
     "@poool/eslint-config": "5.0.7",
     "@swc/core": "1.15.4",
     "@types/node": "25.0.2",
-    "@vitejs/plugin-vue": "6.0.2",
+    "@vitejs/plugin-vue": "6.0.3",
     "@vue/eslint-config-typescript": "14.6.0",
     "@vue/tsconfig": "0.8.1",
     "commit-and-tag-version": "12.6.1",
