@@ -27,7 +27,7 @@
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "@junipero/core": "3.12.3",
+    "@junipero/core": "3.14.1",
     "@types/poool-engage": "2.2.0"
   },
   "devDependencies": {
