@@ -31,7 +31,7 @@
     "@types/poool-engage": "2.2.0"
   },
   "devDependencies": {
-    "@poool/eslint-config": "5.0.7",
+    "@poool/eslint-config": "5.0.10",
     "@swc/core": "1.15.4",
     "@types/node": "25.0.2",
     "@vitejs/plugin-vue": "6.0.2",
